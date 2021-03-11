@@ -1,0 +1,2 @@
+def Stocker():
+    return None
