@@ -39,7 +39,7 @@ def getRightPunctuation(my_choice, my_stock):
         quote_url = quote_url.replace('quote', 'profile')
     if my_choice in ('grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit'):
         my_choice = 'grossProfit'
-        quote_url
+        quote_url = quote_url.replace('quote', 'income-statement')
     elif my_choice in ('daylow', 'DayLow', 'Daylow'):
         my_choice = 'dayLow'
     elif my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
