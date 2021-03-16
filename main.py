@@ -37,6 +37,9 @@ def getRightPunctuation(my_choice, my_stock):
     if my_choice in ('CEO', 'ceo', 'Ceo'):
         my_choice = 'ceo'
         quote_url = quote_url.replace('quote', 'profile')
+    if my_choice in ('employees', 'Employees'):
+        my_choice = 'fullTimeEmployees'
+        quote_url = quote_url.replace('quote', 'profile')
     if my_choice in ('grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit'):
         my_choice = 'grossProfit'
         quote_url = quote_url.replace('quote', 'income-statement')
@@ -44,9 +47,9 @@ def getRightPunctuation(my_choice, my_stock):
         my_choice = 'dayLow'
     elif my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
         my_choice = 'dayHigh'
-    else:
-        print('invalid input')
-        exit
+    #else:
+    #    print('invalid input')
+    #    exit
     return my_choice
 
 
