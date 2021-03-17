@@ -81,6 +81,10 @@ def keepStock():
         my_stock = getStock()
     elif change_this_stock == 'end':
         exit()
+    if change_this_stock != 'yes' or change_this_stock != 'no' or change_this_stock != 'end':
+        print('\n invalid input')
+        keepStock()
+        #FIX THIS PART ASAP!
     return my_stock
 
 
