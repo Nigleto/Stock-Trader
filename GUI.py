@@ -6,8 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template("test.html")
-    #return "Welcome to the Stock Trader! <h1>HELLO</h1>"
-    
+    # return "Welcome to the Stock Trader! <h1>HELLO</h1>"
 
 
 @app.route("/<name>")
