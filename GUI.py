@@ -20,6 +20,8 @@ def login():
         session["user"] = user
         return redirect(url_for("user"))
     else:
+        if user in session:
+            return redirect
         return render_template("login.html")
 
 
@@ -30,6 +32,11 @@ def user():
         return f"<h1>{user}</h1>"
     else:
         return redirect(url_for("login"))
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect()
 
 
 if __name__ == "__main__":

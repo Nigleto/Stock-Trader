@@ -6,7 +6,7 @@ from urllib.request import urlopen
 # TODO: make sure it prints only one of the lines instead of 3 and make sure it only prints price and not the other
 #  things
 # TODO: add a dictionary with all valid stocks, check input against the dictionary to see if real
-# TODO:
+# TODO: Add a command like "MAIN" that doesn't just print one thing, it prints all the main things to look at such as Price, Day High, Day Low, etc.
 # ctrl shift alt j
 
 profile_url = "https://financialmodelingprep.com/api/v3/profile/TSLA?apikey=9e32e1c117e9206264ef7c63453dca84"
@@ -58,8 +58,8 @@ def getRightPunctuation(my_choice, my_stock):
 def getSomething(my_choice, my_stock):
     my_choice = getRightPunctuation(my_choice, my_stock)
     my_data2 = get_jsonparsed_data(quote_url)[0]
-    print(my_data2)
-    print(my_choice)
+    #print(my_data2)
+    #print(my_choice)
     high = my_data2.get(my_choice)
     print(my_choice, ": ", high)
 
@@ -81,7 +81,7 @@ def keepStock():
         my_stock = getStock()
     elif change_this_stock == 'end':
         exit()
-    if change_this_stock != 'yes' or change_this_stock != 'no' or change_this_stock != 'end':
+    elif change_this_stock not in ['yes', 'end', 'no']:
         print('\n invalid input')
         keepStock()
         #FIX THIS PART ASAP!
