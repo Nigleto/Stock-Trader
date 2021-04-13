@@ -84,7 +84,6 @@ def keepStock():
     elif change_this_stock not in ['yes', 'end', 'no']:
         print('\n invalid input')
         keepStock()
-        #FIX THIS PART ASAP!
     return my_stock
 
 
