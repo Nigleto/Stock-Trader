@@ -23,7 +23,7 @@ class users(db.Model):
 
 @app.route("/admin")
 def admin():
-    return 'hello banana'
+    return render_template("index.html")
 
 
 @app.route("/")
@@ -58,7 +58,7 @@ def login():
             flash("Already Logged In!")
             return redirect(url_for("user"))
 
-        return render_template("login.html")
+    return render_template("login.html")
 
 
 @app.route("/user", methods=["POST", "GET"])
@@ -69,6 +69,9 @@ def user():
         if request.method == "POST":
             email = request.form["email"]
             session["email"] = email
+            found_user = users.query.filter_by(name=user).first()
+            found_user.email = email
+            db.session.commit()
             flash("Email was saved!")
         else:
             if "email" in session:
