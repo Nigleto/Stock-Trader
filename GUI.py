@@ -28,7 +28,12 @@ def admin():
 
 @app.route("/")
 def home():
-    return render_template("index.html", content='hello', r=3)
+    return render_template("index.html")
+
+
+@app.route("/view")
+def view():
+    return render_template("view.html", values=users.query.all())
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -41,12 +46,11 @@ def login():
         found_user = users.query.filter_by(name=user).first()
         if found_user:
             session["email"] = found_user.email
-
         else:
             usr = users(user, "")
             db.session.add(usr)
-            db.commit()
-            
+            db.session.commit()
+
         flash("Login Successful!")
         return redirect(url_for("user"))
     else:
