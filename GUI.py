@@ -28,12 +28,13 @@ def admin():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", content='hello', r=3)
 
 
 @app.route("/view")
 def view():
-    return render_template("view.html", values=users.query.all())
+    if request.method == 'GET':
+        return render_template("view.html", values=users.query.all())
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -69,8 +70,6 @@ def user():
         if request.method == "POST":
             email = request.form["email"]
             session["email"] = email
-            found_user = users.query.filter_by(name=user).first()
-            found_user.email = email
             db.session.commit()
             flash("Email was saved!")
         else:
