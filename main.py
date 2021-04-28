@@ -29,7 +29,8 @@ def welcome():
 
 def getRightPunctuation(my_choice, my_stock):
     global quote_url
-    choices = ['price', 'Price', 'PRICE', 'CEO', 'ceo', 'Ceo', 'employees', 'Employees', 'grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit', 'daylow', 'DayLow', 'Daylow', 'DayHigh', 'dayhigh', 'dayHigh']
+    choices = ['price', 'Price', 'PRICE', 'CEO', 'ceo', 'Ceo', 'employees', 'Employees', 'grossprofit', 'GrossProfit',
+               'grossProfit', 'Grossprofit', 'daylow', 'DayLow', 'Daylow', 'DayHigh', 'dayhigh', 'dayHigh']
     quote_url = "https://financialmodelingprep.com/api/v3/quote/TSLA?apikey=9e32e1c117e9206264ef7c63453dca84"
     quote_url = quote_url.replace('TSLA', my_stock)
     if my_choice in ('price', 'Price', 'PRICE'):
@@ -44,14 +45,13 @@ def getRightPunctuation(my_choice, my_stock):
     if my_choice in ('grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit'):
         my_choice = 'grossProfit'
         quote_url = quote_url.replace('quote', 'income-statement')
-    elif my_choice in ('daylow', 'DayLow', 'Daylow'):
+    if my_choice in ('daylow', 'DayLow', 'Daylow'):
         my_choice = 'dayLow'
-    elif my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
+    if my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
         my_choice = 'dayHigh'
     elif my_choice not in choices:
         print('\ninvalid input')
-        getRightPunctuation(my_choice, my_stock)
-
+        getChoice()
 
     return my_choice
 
@@ -85,7 +85,6 @@ def keepStock():
         print('\ninvalid input')
         keepStock()
     return my_stock
-
 
 
 welcome()
