@@ -29,9 +29,10 @@ def welcome():
 
 def getRightPunctuation(my_choice, my_stock):
     global quote_url
+    choices = ['price', 'Price', 'PRICE', 'CEO', 'ceo', 'Ceo', 'employees', 'Employees', 'grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit', 'daylow', 'DayLow', 'Daylow', 'DayHigh', 'dayhigh', 'dayHigh']
     quote_url = "https://financialmodelingprep.com/api/v3/quote/TSLA?apikey=9e32e1c117e9206264ef7c63453dca84"
     quote_url = quote_url.replace('TSLA', my_stock)
-    if my_choice in ('price', 'Price'):
+    if my_choice in ('price', 'Price', 'PRICE'):
         my_choice = 'price'
         quote_url = quote_url.replace('quote', 'profile')
     if my_choice in ('CEO', 'ceo', 'Ceo'):
@@ -47,19 +48,17 @@ def getRightPunctuation(my_choice, my_stock):
         my_choice = 'dayLow'
     elif my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
         my_choice = 'dayHigh'
-    #else:
-    #    print('invalid input')
-    #    exit
+    elif my_choice not in choices:
+        print('\ninvalid input')
+        getRightPunctuation(my_choice, my_stock)
+
+
     return my_choice
-
-
 
 
 def getSomething(my_choice, my_stock):
     my_choice = getRightPunctuation(my_choice, my_stock)
     my_data2 = get_jsonparsed_data(quote_url)[0]
-    #print(my_data2)
-    #print(my_choice)
     high = my_data2.get(my_choice)
     print(my_choice, ": ", high)
 
@@ -71,6 +70,7 @@ def getStock():
 
 def getChoice():
     my_choice = input('What would you like to look at from that stock? (ex: Price, DayHigh, DayLow, etc)\n')
+
     return my_choice
 
 
@@ -82,9 +82,10 @@ def keepStock():
     elif change_this_stock == 'end':
         exit()
     elif change_this_stock not in ['yes', 'end', 'no']:
-        print('\n invalid input')
+        print('\ninvalid input')
         keepStock()
     return my_stock
+
 
 
 welcome()

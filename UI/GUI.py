@@ -2,7 +2,6 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 
-#test
 
 app = Flask(__name__)
 app.secret_key = "hello"
