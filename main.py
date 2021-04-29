@@ -56,6 +56,8 @@ def getRightPunctuation(my_choice, my_stock):
         getSomething()
 
     return my_choice
+
+
 # once you put in one answer, it doesn't let you change it.
 
 def getSomething(my_choice, my_stock):
