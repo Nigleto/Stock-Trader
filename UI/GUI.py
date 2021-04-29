@@ -24,6 +24,7 @@ class users(db.Model):
 
 @app.route("/admin")
 def admin():
+    if 
     return render_template("index.html")
 
 

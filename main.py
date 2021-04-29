@@ -36,25 +36,27 @@ def getRightPunctuation(my_choice, my_stock):
     if my_choice in ('price', 'Price', 'PRICE'):
         my_choice = 'price'
         quote_url = quote_url.replace('quote', 'profile')
-    if my_choice in ('CEO', 'ceo', 'Ceo'):
+    elif my_choice in ('CEO', 'ceo', 'Ceo'):
         my_choice = 'ceo'
         quote_url = quote_url.replace('quote', 'profile')
-    if my_choice in ('employees', 'Employees'):
+    elif my_choice in ('employees', 'Employees'):
         my_choice = 'fullTimeEmployees'
         quote_url = quote_url.replace('quote', 'profile')
-    if my_choice in ('grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit'):
+    elif my_choice in ('grossprofit', 'GrossProfit', 'grossProfit', 'Grossprofit'):
         my_choice = 'grossProfit'
         quote_url = quote_url.replace('quote', 'income-statement')
-    if my_choice in ('daylow', 'DayLow', 'Daylow'):
+    elif my_choice in ('daylow', 'DayLow', 'Daylow'):
         my_choice = 'dayLow'
-    if my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
+    elif my_choice in ('DayHigh', 'dayhigh', 'dayHigh'):
         my_choice = 'dayHigh'
     elif my_choice not in choices:
         print('\ninvalid input')
         getChoice()
+        getRightPunctuation(my_choice)
+        getSomething()
 
     return my_choice
-
+# once you put in one answer, it doesn't let you change it.
 
 def getSomething(my_choice, my_stock):
     my_choice = getRightPunctuation(my_choice, my_stock)
