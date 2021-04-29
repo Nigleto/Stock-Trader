@@ -22,15 +22,14 @@ class users(db.Model):
         self.email = email
 
 
-@app.route("/admin")
-def admin():
-    if 
-    return render_template("index.html")
+# @app.route("/admin")
+#def admin():
+#    return render_template("index.html")
 
 
 @app.route("/")
 def home():
-    return render_template("index.html", content='hello', r=3)
+    return render_template("index.html")
 
 
 @app.route("/view")
@@ -72,6 +71,8 @@ def user():
         if request.method == "POST":
             email = request.form["email"]
             session["email"] = email
+            found_user = users.query.filter_by(name=user).first()
+            found_user.email = email
             db.session.commit()
             flash("Email was saved!")
         else:
