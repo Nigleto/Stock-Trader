@@ -22,14 +22,18 @@ class users(db.Model):
         self.email = email
 
 
-# @app.route("/admin")
-#def admin():
-#    return render_template("index.html")
+@app.route("/admin")
+def admin():
+    return render_template("index.html")
 
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template('home.html')
+
+@app.route('/about/<username>')
+def about_page(username):
+    return f'<h1>This is the about page of {username}</h1>'
 
 
 @app.route("/view")
