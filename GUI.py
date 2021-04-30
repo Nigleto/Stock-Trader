@@ -2,7 +2,6 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask(__name__)
 app.secret_key = "hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
@@ -22,18 +21,9 @@ class users(db.Model):
         self.email = email
 
 
-@app.route("/admin")
-def admin():
-    return render_template("index.html")
-
-
 @app.route("/")
 def home():
-    return render_template('home.html')
-
-@app.route('/about/<username>')
-def about_page(username):
-    return f'<h1>This is the about page of {username}</h1>'
+    return render_template('index.html')
 
 
 @app.route("/view")
@@ -63,7 +53,6 @@ def login():
         if "user" in session:
             flash("Already Logged In!")
             return redirect(url_for("user"))
-
     return render_template("login.html")
 
 
