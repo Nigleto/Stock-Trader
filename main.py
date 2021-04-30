@@ -52,8 +52,8 @@ def getRightPunctuation(my_choice, my_stock):
     elif my_choice not in choices:
         print('\ninvalid input')
         getChoice()
-        getRightPunctuation(my_choice)
-        getSomething()
+        getRightPunctuation(my_choice, my_stock)
+        getSomething(my_choice, my_stock)
 
     return my_choice
 
